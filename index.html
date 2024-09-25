@@ -22,25 +22,21 @@
         </div>
     </header>
 
-    <!-- New Section for the three containers -->
+    
     <section class="features-section">
         <div class="container features">
             <div class="feature-box" id="optimal-fertilizer" onclick="toggleForm('fertilizer-form')">
                 <h3>Optimal Fertilizer Suggestion</h3>
                 <p>Get customized fertilizer suggestions based on soil data.</p>
             </div>
-            <div class="feature-box" onclick="location.href='#disease-prediction'">
+            <div class="feature-box" id="disease-prediction" onclick="toggleForm('disease-form')">
                 <h3>Crop Disease Prediction</h3>
                 <p>Analyze your crops and predict possible diseases.</p>
-            </div>
-            <div class="feature-box" onclick="location.href='#msp'">
-                <h3>Government MSP</h3>
-                <p>Check the Minimum Support Price (MSP) for your crops.</p>
             </div>
         </div>
     </section>
 
-    <!-- Form Section (Initially Hidden) -->
+    
     <section class="form-section" id="fertilizer-form" style="display:none;">
         <div class="container">
             <h2>Get Tailored Fertilizer Recommendations</h2>
@@ -57,10 +53,20 @@
                 <label for="weather">Weather Data</label>
                 <input type="text" id="weather" name="weather" placeholder="Enter weather data">
                 
+                <button type="submit" class="analyze-btn">Analyze</button>
+            </form>
+        </div>
+    </section>
+
+
+    <section class="form-section" id="disease-form" style="display:none;">
+        <div class="container">
+            <h2>Upload Crop Image for Disease Prediction</h2>
+            <form>
                 <label for="crop-image">Upload Crop Image</label>
                 <input type="file" id="crop-image" name="crop-image" accept="image/*">
                 
-                <button type="submit" class="analyze-btn">Analyze</button>
+                <button type="submit" class="analyze-btn">Predict Disease</button>
             </form>
         </div>
     </section>
@@ -71,9 +77,14 @@
         </div>
     </footer>
 
+   
     <script>
-        // Function to toggle the form display
         function toggleForm(formId) {
+            
+            const forms = document.querySelectorAll('.form-section');
+            forms.forEach(form => form.style.display = 'none');
+
+            
             const form = document.getElementById(formId);
             if (form.style.display === "none") {
                 form.style.display = "block";
